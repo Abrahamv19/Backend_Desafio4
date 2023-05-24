@@ -38,23 +38,10 @@ app.get("*", (req, res) => {
   res.status(404).send({ status: "error", data: "Page Not Found" });
 });
 
-// WEBSOCKET ***** OJO REVISAR PORQUE NO ENCIENDE SOCKET 
+// WEBSOCKET 
 io.on('connection', (socket) => {
   console.log('Socket Connection on!!');
 });
 
 server.listen(port, () => console.log(`Server on!! - Port: ${port}`));
 
-// CONECCION AL SOCKET
-// const httpServer = app.listen(port, () => console.log(`Server on!! - Port: ${port}`));
-// const socket = new Server(httpServer);
-
-// // LLAMADA DE PRODUCTOS
-// const products = productManager.getProducts();
-// socket.on('connection', socket => {
-//     console.log("Client Connection on!!");
-
-// // ENVIAMOS LOS PRODUCTOS EXISTENTES
-// socket.emit('products',products);
-// console.log("Real time Products list")
-// });
