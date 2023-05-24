@@ -60,6 +60,7 @@ export class ProductManager {
 
             if((product.title === undefined || product.title === null || product.title === '') || (product.description === undefined || product.description === null || product.description === '') || (product.price === undefined || product.price === null || product.price === '') || (product.thumbnail === undefined || product.thumbnail === null || product.thumbnail === '') || (product.code === undefined || product.code === null || product.code === '' || value === true) || (product.stock === undefined || product.stock === null || product.stock === '') || (product.status === undefined || product.status === null || product.status === '')) {
                 console.log('Error!!, Code field cannot be repeated and fields can not be undefined, null or empty space'); 
+                return false;
 
             }else {
                 let maxId = 0;
@@ -113,12 +114,14 @@ export class ProductManager {
           const product = newData.find((product) => product.id == id);
           if (!product) {
             console.log("Product not found");
+            return false;
           } else {
             const filteredData = newData.filter((prod) => prod.id != id);
             const dataJSON = JSON.stringify(filteredData);
             await fs.promises.writeFile(this.path, dataJSON);
     
             console.log("Deleted product successfully");
+            return true;
           }
         } catch (error) {
             console.log(error); 
