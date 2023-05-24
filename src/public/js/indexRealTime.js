@@ -2,18 +2,18 @@ const socket = io()
 socket.on('realTime',(data)=>{
     const tableBody = document.querySelector('#table tbody');
     
-    // Limpiar los datos existentes en la tabla
+    // Resetea la tabla
     tableBody.innerHTML = '';
     const table = document.getElementById("table")
-    // Recorre el array de objetos
+    // Recorre el arreglo data
     data.forEach((dato) => {
-        // Crea una nueva fila
+    // Crea fila
     const newRow = document.createElement('tr');
 
-    // Crea las celdas y agrega el contenido
+    // Agrega el contenido a la celda td
     const idCell = document.createElement('td');
     idCell.textContent = dato.id;
-    // Se agrega a la fila corrrespondiente del encabezado
+    // Agrega idcell a newRow
     newRow.appendChild(idCell);
 
     const titleCell = document.createElement('td');
@@ -47,7 +47,7 @@ socket.on('realTime',(data)=>{
     const stockCell = document.createElement('td');
     stockCell.textContent = dato.stock;
     newRow.appendChild(stockCell);
-    // Se agrega a la tabla con todas las celdas en una misma fila
+    // Agrega newRow completa a la tabla tableBody
     tableBody.appendChild(newRow);	
         
         });
